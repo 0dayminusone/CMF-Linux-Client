@@ -12,9 +12,20 @@ class CMFNixApp extends StatelessWidget {
     return MaterialApp(
       title: 'CMF Nix',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFFFF0073), // reddish pink colourscheme
+          brightness: Brightness.dark,
+        ),
         useMaterial3: true,
       ),
+      darkTheme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFFFF0073),
+          brightness: Brightness.dark,
+        ),
+        useMaterial3: true,
+      ),
+      themeMode: ThemeMode.dark,
       home: const MyHomePage(title: 'CMF Nix'),
     );
   }
@@ -36,9 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: const Center(
-        child: Text('Nothing Earbuds Control'),
-      ),
+      body: const Center(child: Text('Nothing Earbuds Control')),
     );
   }
 }
