@@ -1,4 +1,4 @@
-// ANC modes, maps to the byte values found packet sniffing BL values, see in the bl dart file for exact byte values
+// ANC modes, maps to the byte values found in packet sniffing
 enum AncMode { high, mid, low, adaptive, transparency, off }
 
 extension AncModeExtension on AncMode {
@@ -52,4 +52,12 @@ extension AncModeExtension on AncMode {
         return 'No cancellation';
     }
   }
+}
+
+// lookup mode
+AncMode? ancModeFromValue(int value) {
+  for (AncMode mode in AncMode.values) {
+    if (mode.value == value) return mode;
+  }
+  return null;
 }
