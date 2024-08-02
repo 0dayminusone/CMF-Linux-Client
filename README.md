@@ -1,16 +1,18 @@
-# cmf_nix
+# CMF*nix
 
-A new Flutter project.
+## Screenshot Previews
 
-## Getting Started
+![preview](./media/preview.png)
 
-This project is a starting point for a Flutter application.
+## Process of getting BL Values
 
-A few resources to get you started if this is your first Flutter project:
+1. On a spare **Android** Phone, [turn on developer mode](https://developer.android.com/studio/debug/dev-options), enable bluetooth HCI snoop logs & "USB Debugging" (remember to toggle all of these off after)
+2. Go into CMF Nothing Android App, connect your buds, toggle all of the functions (i.e. low latency mode, etc.)
+3. Install [ADB](https://developer.android.com/tools/adb) via your package manager, connect your Android Phone to your desktop device via USB, run `adb usb` && `adb devices` you should see your Android Device Listed, if not, check your connection
+4. run `adb bugreport` & unzip the archive, navigate to `./FS/data/log/bt/btsnoop_hci.log`, load this file into the Wireshark packet sniffing application on your Desktop, it should look something like [**this**](https://github.com/0dayminusone/CMF-Linux-Client/blob/master/media/wireshark.png):
+![wireshark preview](./media/wireshark.png)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## How to Build
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- `flutter pub get`
+- `flutter build -d [your target]` target = linux (the infa is in place to make proj OS agnostic)
